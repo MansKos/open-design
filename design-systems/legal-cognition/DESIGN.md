@@ -34,6 +34,35 @@ them with paths relative to the design-system root.
   integration logos. Use on connector / integrations surfaces only;
   always next to the connector name.
 
+### Icon font: Phosphor
+
+The system ships [Phosphor Icons](https://github.com/phosphor-icons/web)
+v2.1.2 (MIT) under `icons/phosphor/`. Phosphor is the **default icon
+system** for every generic UI surface — replaces the legacy lucide
+references throughout this spec.
+
+- `icons/phosphor/regular/style.css` — drop-in stylesheet, 1530
+  icons, `@font-face`-loaded.
+- `icons/phosphor/regular/Phosphor.woff2` — webfont (147 KB).
+- `icons/phosphor/LICENSE` — MIT license, kept with the bundle.
+
+**Usage**
+```html
+<link rel="stylesheet" href="icons/phosphor/regular/style.css" />
+<i class="ph ph-shield-check"></i>
+<i class="ph ph-folder-lock"></i>
+```
+
+Only the **Regular** weight is bundled — it matches the lawyer-calm
+tone (no Bold visual shouting, no decorative Duotone). Other weights
+(thin, light, bold, fill, duotone) are intentionally not bundled; if
+a brief truly needs them, install them per-project rather than
+expanding the system bundle.
+
+The **bespoke botanical plan icons** (`assets/Icon_*.svg`) and the
+**model avatars** (`assets/models/*.svg`) keep their existing rules —
+Phosphor never substitutes for them.
+
 ### Reference HTML
 
 The bundle ships pixel-level reference pages. **Read these before
@@ -278,13 +307,26 @@ running prose.
 
 ### Icons
 
-- **Generic UI:** `lucide-react` at 2px stroke, sizes 14 / 16 / 24px.
-  Inherit `currentColor`, never hard-coded.
+- **Generic UI:** **Phosphor** Regular weight via the bundled
+  `icons/phosphor/regular/style.css`. Sizes 14 / 16 / 20 / 24 px.
+  Set color through `currentColor` on the parent (Phosphor renders as
+  font glyphs, so `color`, `font-size`, and `line-height` control it).
+  Default size is 16px alongside 15/400 body, 20px on nav and toolbar
+  affordances, 24px in standalone tile headers, 14px on dense table
+  rows. Use the kebab-case class names from the Phosphor catalog,
+  prefixed with `ph` and the icon name — for example:
+  - `<i class="ph ph-shield-check"></i>` for trust badges
+  - `<i class="ph ph-folder-lock"></i>` for Vault entries
+  - `<i class="ph ph-magnifying-glass"></i>` for search
+  - `<i class="ph ph-chat-circle"></i>` for the AI assistant
+  - `<i class="ph ph-arrow-right"></i>` on inline CTAs
+  Never inline an SVG when a Phosphor glyph exists.
 - **Plan icons:** the bespoke botanical SVG set
   (`assets/Icon_free|professional|business|team|enterprise.svg`).
-  Pricing only.
+  Pricing only — Phosphor never substitutes here.
 - **Model avatars:** `assets/models/<provider>.svg` only when the
-  surface names that model in the AI-assistant context.
+  surface names that model in the AI-assistant context. Phosphor
+  never substitutes here either.
 - **Connector logos:** `assets/connectors/*.png|svg`, always paired
   with the connector name on integration surfaces.
 
@@ -513,13 +555,17 @@ single sanctioned exception).
    `<link rel="stylesheet" href="colors_and_type.css" />`. That alone
    loads every token, the Hikasami `@font-face` rules, and the
    semantic element defaults.
-3. Default to light mode. Add `<html data-theme="dark">` only when the
+3. Link the Phosphor icon stylesheet right after:
+   `<link rel="stylesheet" href="icons/phosphor/regular/style.css" />`.
+   Use Phosphor for every generic UI icon (`<i class="ph ph-…"></i>`).
+   Only fall back to inline SVG when no Phosphor glyph fits.
+4. Default to light mode. Add `<html data-theme="dark">` only when the
    brief explicitly asks for dark.
-4. Reference logos and icons by their bundled paths
+5. Reference logos and brand-specific SVGs by their bundled paths
    (`assets/LC7x.png`, `assets/Icon_business.svg`, `assets/models/claude.svg`).
-   Don't substitute lucide or generic icons for the bespoke
-   botanical plan icons.
-5. **Never invent hex values.** If the request needs a token outside
+   Don't substitute Phosphor glyphs for the bespoke botanical plan
+   icons or the model avatars.
+6. **Never invent hex values.** If the request needs a token outside
    the palette, surface a warning comment in the artifact and use
    the closest existing token.
 
@@ -572,18 +618,21 @@ these surfaces, mirror these prompts; don't freestyle.
 ### Iteration checklist
 
 1. Did I link `colors_and_type.css`? (No inline `:root` token blocks.)
-2. Is there exactly **one** burgundy element on the screen?
-3. Are weights 400 / 500 only — except plan price (600)?
-4. Are all radii from the scale (2 / 4 / 6 / 8 / 12 / 16 / [20])?
-5. Did I default to size-driven hierarchy, not weight?
-6. Did I include at least one trust signal on any surface that
+2. Did I link `icons/phosphor/regular/style.css` and use
+   `<i class="ph ph-…"></i>` for every generic icon?
+3. Is there exactly **one** burgundy element on the screen?
+4. Are weights 400 / 500 only — except plan price (600)?
+5. Are all radii from the scale (2 / 4 / 6 / 8 / 12 / 16 / [20])?
+6. Did I default to size-driven hierarchy, not weight?
+7. Did I include at least one trust signal on any surface that
    touches data?
-7. Is the primary CTA copy German (*Legal Cognition ausprobieren* /
+8. Is the primary CTA copy German (*Legal Cognition ausprobieren* /
    *Demo buchen*) unless the brief explicitly says otherwise?
-8. Do my cards rely on a 1px border for elevation, not a shadow?
-9. Did I avoid emoji and pure black/white?
-10. If I used a botanical or model SVG, am I in the right context
-    (pricing / AI assistant only)?
+9. Do my cards rely on a 1px border for elevation, not a shadow?
+10. Did I avoid emoji and pure black/white?
+11. If I used a botanical or model SVG, am I in the right context
+    (pricing / AI assistant only) — and not a Phosphor glyph in its
+    place?
 
 ### Surface-specific guidance
 
@@ -593,9 +642,9 @@ these surfaces, mirror these prompts; don't freestyle.
   and a 1px border (no shadow), trust strip mid-page, black footer
   with *Recht bekommen.*
 - **Product chrome (Vault, CLM, Data Rooms, AI Assistant).** Same
-  palette, raise density: 14–15px body, 8px input radius, lucide
-  icons at 16px, sidebar nav with `--lc-divider` separators, table
-  rules at `rgba(0,0,0,0.10)`.
+  palette, raise density: 14–15px body, 8px input radius, **Phosphor
+  Regular icons at 16px** (`<i class="ph ph-…"></i>`), sidebar nav
+  with `--lc-divider` separators, table rules at `rgba(0,0,0,0.10)`.
 - **Pricing.** Botanical plan card pattern, 4–5 across at desktop,
   trust strip directly below the grid.
 - **Decks / pitch.** Hero patterns translate directly to title slides
