@@ -6,6 +6,38 @@
 > German law, TipTap notes editor. Use for any Legal Cognition surface;
 > works generally as a warm-paper monochrome system with one strong accent.
 
+## Bundled Assets
+The system ships with the real LC files alongside this `DESIGN.md`. Reference
+them with paths relative to the design-system root.
+
+- `colors_and_type.css` — drop-in stylesheet. All `--lc-*` CSS variables
+  plus semantic element styles (`html`, `body`, `h1`–`h4`, `p`, `a`, `hr`).
+  Link it once and bare HTML already looks like Legal Cognition:
+  `<link rel="stylesheet" href="colors_and_type.css" />`
+- `fonts/Hikasami-Regular.woff2` (400) · `Hikasami-Medium.woff2` (500) ·
+  `Hikasami-SemiBold.woff2` (600) · `Hikasami-Bold.woff2` (700) ·
+  `Hikasami-VF.woff2` (variable, axis 100–900). Already wired up via
+  `@font-face` inside `colors_and_type.css`.
+- `assets/LC7x.png` — primary wordmark / logo (light surfaces).
+- `assets/logo_weiss.png` — wordmark for dark surfaces.
+- `assets/madeinger_black.png` / `madeinger_white.png` — Made-in-Germany
+  badges. Required when the surface mentions data residency or trust.
+- `assets/Icon_free.svg` · `Icon_professional.svg` · `Icon_business.svg` ·
+  `Icon_team.svg` · `Icon_enterprise.svg` — bespoke botanical plan icons
+  (seed → sprout → canopy → network → stack). **Pricing page only —
+  do not reuse elsewhere.**
+- `assets/models/claude.svg` · `gemini.svg` · `mistral.svg` ·
+  `openai.svg` · `scrivener.svg` — model avatars. Use only when naming
+  the corresponding model in an AI-assistant surface.
+- `assets/connectors/Dropbox.png` · `SharePoint.png` · `Notion.png` ·
+  `GoogleDrive.png` · `OneDrive.png` · `Confluence.svg` — third-party
+  integration logos. Use on connector / integrations surfaces only;
+  always next to the connector name.
+
+Hikasami is a proprietary brand typeface — do not redistribute these
+woff2 files outside this project. The system stack fallback in
+`--lc-font-sans` keeps the design legible if the fonts are removed.
+
 ## Visual Theme & Atmosphere
 Lawyer-calm. Warm paper, deep ink, a single burgundy CTA. Monochrome
 ink-on-paper with no ornament. Trust signals (DSGVO, BRAO, ISO 27001,
@@ -133,10 +165,17 @@ not leak into product chrome.
   section H2 36→28px.
 
 ## Agent Prompt Guide
+- **Start every artifact** by linking the drop-in stylesheet:
+  `<link rel="stylesheet" href="colors_and_type.css" />`. That gets you
+  the full token set, the `@font-face` declarations for Hikasami, and
+  the semantic element styles in one line — never re-author them inline.
 - Pull every color and font value from this file. **Never invent hexes.**
   Burgundy is `#66023C`; paper is `#FAF9F5`; ink is `#213547`. If the
   request needs a token outside the palette, surface a warning comment
   in the artifact and use the closest existing one.
+- Reference logos and icons by their bundled paths (`assets/LC7x.png`,
+  `assets/Icon_business.svg`, etc.). Don't substitute lucide or other
+  generic icons for the bespoke botanical plan icons.
 - Default to light mode. Add `<html data-theme="dark">` only when the
   brief explicitly asks for dark.
 - For marketing surfaces, model the layout on the LC landing: sticky
