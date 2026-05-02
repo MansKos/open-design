@@ -42,22 +42,35 @@ system** for every generic UI surface — replaces the legacy lucide
 references throughout this spec.
 
 - `icons/phosphor/regular/style.css` — drop-in stylesheet, 1530
-  icons, `@font-face`-loaded.
+  icons, `@font-face`-loaded. Class prefix: `ph`.
 - `icons/phosphor/regular/Phosphor.woff2` — webfont (147 KB).
+- `icons/phosphor/fill/style.css` — filled variants, same icon set.
+  Class prefix: `ph-fill`.
+- `icons/phosphor/fill/Phosphor-Fill.woff2` — webfont (132 KB).
 - `icons/phosphor/LICENSE` — MIT license, kept with the bundle.
 
 **Usage**
 ```html
 <link rel="stylesheet" href="icons/phosphor/regular/style.css" />
-<i class="ph ph-shield-check"></i>
-<i class="ph ph-folder-lock"></i>
+<link rel="stylesheet" href="icons/phosphor/fill/style.css" />
+
+<!-- inactive / outline (default) -->
+<i class="ph ph-folder"></i>
+
+<!-- active / selected — fill weight -->
+<i class="ph-fill ph-folder"></i>
 ```
 
-Only the **Regular** weight is bundled — it matches the lawyer-calm
-tone (no Bold visual shouting, no decorative Duotone). Other weights
-(thin, light, bold, fill, duotone) are intentionally not bundled; if
-a brief truly needs them, install them per-project rather than
-expanding the system bundle.
+**Two weights are bundled by intent.** Regular is the workhorse for
+every static UI moment. Fill is reserved for **active / selected
+states** (current sidebar item, current tab, sent toolbar action,
+selected filter chip) — pairing the two lets the agent express
+state without breaking the single-burgundy rule. Other weights
+(thin, light, bold, duotone) are intentionally not bundled: bold
+violates the 400/500 weight discipline, light/thin become unreadable
+at the 14–16px product density, and duotone is decoration the brand
+forbids. If a brief truly needs them, install per-project rather
+than expanding the system bundle.
 
 The **bespoke botanical plan icons** (`assets/Icon_*.svg`) and the
 **model avatars** (`assets/models/*.svg`) keep their existing rules —
@@ -307,18 +320,30 @@ running prose.
 
 ### Icons
 
-- **Generic UI:** **Phosphor** Regular weight via the bundled
-  `icons/phosphor/regular/style.css`. Sizes 14 / 16 / 20 / 24 px.
-  Set color through `currentColor` on the parent (Phosphor renders as
-  font glyphs, so `color`, `font-size`, and `line-height` control it).
-  Default size is 16px alongside 15/400 body, 20px on nav and toolbar
-  affordances, 24px in standalone tile headers, 14px on dense table
-  rows. Use the kebab-case class names from the Phosphor catalog,
-  prefixed with `ph` and the icon name — for example:
+- **Generic UI:** **Phosphor** via the bundled stylesheets. Two
+  weights, both via the same icon-name vocabulary, only the prefix
+  class swaps:
+  - **Regular** (`ph` prefix) — outline weight. Default for every
+    static UI moment, every inactive state, every standalone icon
+    next to a label.
+  - **Fill** (`ph-fill` prefix) — solid weight. Reserved for **active
+    or selected states**: current sidebar item, current breadcrumb,
+    selected tab, sent send-button, active filter chip, current
+    step in a wizard. Always pair Fill with Regular — Fill alone,
+    without an inactive Regular sibling somewhere on the screen,
+    is a smell.
+  Sizes 14 / 16 / 20 / 24 px. Set color through `currentColor` on
+  the parent (Phosphor renders as font glyphs, so `color`,
+  `font-size`, and `line-height` control it). Default size is 16px
+  alongside 15/400 body, 20px on nav and toolbar affordances, 24px
+  in standalone tile headers, 14px on dense table rows.
+  Use the kebab-case class names from the Phosphor catalog — for
+  example:
   - `<i class="ph ph-shield-check"></i>` for trust badges
-  - `<i class="ph ph-folder-lock"></i>` for Vault entries
+  - `<i class="ph ph-folder-lock"></i>` (Regular) → `<i class="ph-fill ph-folder-lock"></i>` (active in sidebar)
   - `<i class="ph ph-magnifying-glass"></i>` for search
-  - `<i class="ph ph-chat-circle"></i>` for the AI assistant
+  - `<i class="ph ph-chat-circle"></i>` for the AI assistant entry
+  - `<i class="ph-fill ph-paper-plane-tilt"></i>` on the send button after submit
   - `<i class="ph ph-arrow-right"></i>` on inline CTAs
   Never inline an SVG when a Phosphor glyph exists.
 - **Plan icons:** the bespoke botanical SVG set
@@ -555,10 +580,13 @@ single sanctioned exception).
    `<link rel="stylesheet" href="colors_and_type.css" />`. That alone
    loads every token, the Hikasami `@font-face` rules, and the
    semantic element defaults.
-3. Link the Phosphor icon stylesheet right after:
-   `<link rel="stylesheet" href="icons/phosphor/regular/style.css" />`.
-   Use Phosphor for every generic UI icon (`<i class="ph ph-…"></i>`).
-   Only fall back to inline SVG when no Phosphor glyph fits.
+3. Link both Phosphor stylesheets right after:
+   `<link rel="stylesheet" href="icons/phosphor/regular/style.css" />`
+   `<link rel="stylesheet" href="icons/phosphor/fill/style.css" />`.
+   Use **Regular** (`<i class="ph ph-…"></i>`) for every static and
+   inactive icon; use **Fill** (`<i class="ph-fill ph-…"></i>`) only
+   for active/selected states. Only fall back to inline SVG when no
+   Phosphor glyph fits.
 4. Default to light mode. Add `<html data-theme="dark">` only when the
    brief explicitly asks for dark.
 5. Reference logos and brand-specific SVGs by their bundled paths
@@ -618,8 +646,9 @@ these surfaces, mirror these prompts; don't freestyle.
 ### Iteration checklist
 
 1. Did I link `colors_and_type.css`? (No inline `:root` token blocks.)
-2. Did I link `icons/phosphor/regular/style.css` and use
-   `<i class="ph ph-…"></i>` for every generic icon?
+2. Did I link both Phosphor stylesheets (`regular` and `fill`),
+   use `ph` for inactive/static icons and `ph-fill` only for
+   active/selected states?
 3. Is there exactly **one** burgundy element on the screen?
 4. Are weights 400 / 500 only — except plan price (600)?
 5. Are all radii from the scale (2 / 4 / 6 / 8 / 12 / 16 / [20])?
