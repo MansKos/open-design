@@ -34,6 +34,33 @@ them with paths relative to the design-system root.
   integration logos. Use on connector / integrations surfaces only;
   always next to the connector name.
 
+### Reference HTML
+
+The bundle ships pixel-level reference pages. **Read these before
+freestyling a layout** — they are the source of truth for how the
+tokens compose into real UI. All reference paths in them already
+point to the bundled `colors_and_type.css` and `assets/`, so they
+render correctly when opened in a browser straight from the
+design-system folder.
+
+- `preview/colors.html` — every palette token rendered as a swatch
+  card with hex + role + alpha annotation.
+- `preview/type.html` — full type ramp from caption (13/400) to hero
+  (56/400), each row showing font, size, weight, line-height, and
+  tracking values.
+- `preview/spacing.html` — the spacing scale visualized as ruled
+  bars with the rem and px values inline.
+- `preview/components.html` — buttons, cards, inputs, dropdowns,
+  pills, plan cards, AI-assistant rows, and connector tiles in
+  their canonical state. **Crib component markup from this file
+  before writing your own.**
+- `preview/brand.html` — wordmark sizing, dark/light variants,
+  Made-in-Germany badge placement, footer composition.
+- `ui_kits/landing/index.html` — the full marketing landing page
+  recreated end-to-end. Header → hero → features → AI-assistant
+  showcase → pricing grid → trust strip → footer. Use this as the
+  primary reference for any marketing surface.
+
 Hikasami is a proprietary brand typeface — do not redistribute these
 woff2 files outside this project. The system stack fallback in
 `--lc-font-sans` keeps the design legible if the fonts are removed.
@@ -476,17 +503,23 @@ single sanctioned exception).
 
 ### Mandatory openers for every artifact
 
-1. Link the drop-in stylesheet **first**:
+1. **Read the reference pages first.** Before authoring a component,
+   open `preview/components.html` and look for the closest match;
+   crib the markup. For a marketing surface, open
+   `ui_kits/landing/index.html` and lift the section structure.
+   These files are not decorative — they are the canonical
+   component library.
+2. Link the drop-in stylesheet **first** in your artifact:
    `<link rel="stylesheet" href="colors_and_type.css" />`. That alone
    loads every token, the Hikasami `@font-face` rules, and the
    semantic element defaults.
-2. Default to light mode. Add `<html data-theme="dark">` only when the
+3. Default to light mode. Add `<html data-theme="dark">` only when the
    brief explicitly asks for dark.
-3. Reference logos and icons by their bundled paths
+4. Reference logos and icons by their bundled paths
    (`assets/LC7x.png`, `assets/Icon_business.svg`, `assets/models/claude.svg`).
    Don't substitute lucide or generic icons for the bespoke
    botanical plan icons.
-4. **Never invent hex values.** If the request needs a token outside
+5. **Never invent hex values.** If the request needs a token outside
    the palette, surface a warning comment in the artifact and use
    the closest existing token.
 

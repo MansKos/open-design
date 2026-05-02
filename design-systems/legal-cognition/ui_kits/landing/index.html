@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<title>Legal Cognition — Landing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<style>
+  body { background: var(--lc-bg); color: var(--lc-ink); margin: 0; }
+  a { text-decoration: none; }
+
+  /* ======= Header ======= */
+  .header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--lc-header-bg);
+    backdrop-filter: var(--lc-backdrop-header);
+    -webkit-backdrop-filter: var(--lc-backdrop-header);
+    border-bottom: 1px solid var(--lc-header-border);
+  }
+  .header-inner {
+    max-width: 1400px; margin: 0 auto;
+    height: 72px;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand img { height: 28px; filter: invert(1); }
+  .nav-links { display: flex; gap: 32px; flex: 1; justify-content: center; }
+  .nav-links a {
+    font-size: 1rem; color: var(--lc-ink); font-weight: 400;
+    transition: color var(--lc-t-default) var(--lc-ease);
+  }
+  .nav-links a.inactive { color: var(--lc-ink-3); }
+  .nav-links a:hover { color: var(--lc-burgundy); }
+  .header-ctas { display: flex; align-items: center; gap: 12px; }
+  .btn-ghost {
+    font-family: inherit; background: transparent; border: 0;
+    font-size: 0.8125rem; color: var(--lc-ink); padding: 8px 14px;
+    cursor: pointer; border-radius: 6px;
+    transition: background var(--lc-t-default) var(--lc-ease);
+  }
+  .btn-ghost:hover { background: rgba(0,0,0,0.05); }
+  .btn-primary {
+    font-family: inherit; background: var(--lc-burgundy); color: #fff;
+    border: 0; padding: 10px 18px; border-radius: 6px;
+    font-size: 0.8125rem; font-weight: 500; cursor: pointer;
+    letter-spacing: -0.005em;
+    transition: opacity var(--lc-t-default) var(--lc-ease),
+                transform var(--lc-t-default) var(--lc-ease),
+                box-shadow var(--lc-t-default) var(--lc-ease);
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: var(--lc-shadow-hover);
+  }
+  .lang-toggle {
+    display: inline-flex; background: var(--lc-bg-sunken);
+    border-radius: 999px; padding: 2px;
+  }
+  .lang-toggle button {
+    border: 0; background: transparent; padding: 5px 12px;
+    border-radius: 999px; font-size: 0.75rem; color: var(--lc-ink-2);
+    cursor: pointer; font-family: inherit; font-weight: 500;
+  }
+  .lang-toggle button.on { background: #fff; color: var(--lc-ink); }
+
+  /* ======= Hero ======= */
+  .hero {
+    padding: 6rem 2rem 8rem;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: 3.5rem; font-weight: 400; letter-spacing: -0.01em;
+    line-height: 1.1; margin: 0 0 1.5rem;
+  }
+  .hero-sub {
+    font-size: 1.125rem; color: var(--lc-ink-2); line-height: 1.6;
+    max-width: 500px; margin: 0 0 2rem;
+  }
+  .auth-form {
+    display: flex; flex-direction: column; gap: 12px; max-width: 440px;
+  }
+  .auth-row { display: flex; gap: 10px; }
+  .auth-row .input {
+    flex: 1;
+    padding: 13px 16px;
+    border: 1px solid var(--lc-border-strong);
+    border-radius: var(--lc-radius-md);
+    background: var(--lc-bg-alt);
+    font-size: 0.9375rem; color: var(--lc-ink); font-family: inherit;
+    transition: border-color var(--lc-t-default) var(--lc-ease);
+  }
+  .auth-row .input:focus { outline: none; border-color: var(--lc-ink); }
+  .auth-row .input::placeholder { color: var(--lc-ink-3); }
+  .auth-row button {
+    padding: 13px 22px;
+    background: var(--lc-burgundy); color: #fff; border: 0;
+    border-radius: var(--lc-radius-md); font-family: inherit;
+    font-size: 0.875rem; font-weight: 500; cursor: pointer;
+    transition: opacity var(--lc-t-default) var(--lc-ease);
+  }
+  .auth-row button:hover { opacity: 0.9; }
+  .mode-toggle {
+    display: inline-flex; background: var(--lc-bg-sunken);
+    border-radius: 20px; padding: 4px; align-self: flex-start;
+  }
+  .mode-toggle button {
+    border: 0; background: transparent; padding: 7px 18px;
+    border-radius: 20px; font-size: 0.8125rem; color: var(--lc-ink-2);
+    cursor: pointer; font-family: inherit; font-weight: 500;
+    transition: all var(--lc-t-default) var(--lc-ease);
+  }
+  .mode-toggle button.on {
+    background: var(--lc-bg-alt); color: var(--lc-ink);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .privacy {
+    font-size: 0.75rem; color: var(--lc-ink-3);
+    line-height: 1.5; max-width: 440px;
+  }
+  .privacy a { color: var(--lc-ink-2); text-decoration: underline; }
+
+  .hero-visual {
+    aspect-ratio: 4/5;
+    background:
+      linear-gradient(180deg, #c2bdb3 0%, #a89f90 60%, #7a7266 100%);
+    border-radius: var(--lc-radius-xl);
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end; padding: 2rem;
+  }
+  .hero-visual::before {
+    /* warm vignette / figure suggestion */
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 35%, rgba(60,50,40,0.45) 0%, transparent 45%),
+      radial-gradient(ellipse at 65% 70%, rgba(230,215,195,0.25) 0%, transparent 55%);
+  }
+  .hero-visual .tag {
+    position: relative;
+    font-size: 0.75rem; color: rgba(255,255,255,0.7);
+    font-family: var(--lc-font-mono);
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  /* ======= Trust bar ======= */
+  .trust {
+    border-top: 1px solid var(--lc-border-hairline);
+    border-bottom: 1px solid var(--lc-border-hairline);
+    padding: 1.5rem 2rem;
+    margin: 0 auto;
+    max-width: 1400px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .trust-item {
+    font-size: 0.75rem; letter-spacing: 0.04em;
+    color: var(--lc-ink-3); text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ======= Features ======= */
+  .features { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--lc-ink-3); text-align: center; margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-size: 2.25rem; font-weight: 400; text-align: center;
+    letter-spacing: -0.01em; line-height: 1.25;
+    max-width: 780px; margin: 0 auto 4rem;
+  }
+  .feat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .feat-card {
+    background: var(--lc-bg-alt);
+    border: 1px solid var(--lc-border);
+    border-radius: var(--lc-radius-xl);
+    padding: 2.5rem 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    min-height: 320px;
+  }
+  .feat-card .eyebrow {
+    font-size: 0.6875rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--lc-burgundy);
+    font-weight: 600;
+  }
+  .feat-card h3 {
+    font-size: 1.5rem; font-weight: 500; letter-spacing: -0.005em;
+    margin: 0; line-height: 1.3;
+  }
+  .feat-card p {
+    color: var(--lc-ink-2); line-height: 1.6; font-size: 0.9375rem;
+    margin: 0;
+  }
+  .feat-preview {
+    margin-top: auto; height: 180px;
+    background: var(--lc-bg-sunken);
+    border-radius: var(--lc-radius-lg);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .feat-preview.chat {
+    background:
+      linear-gradient(180deg, #f3f1ec 0%, #e8e6e1 100%);
+    padding: 16px;
+    flex-direction: column; gap: 8px; align-items: stretch; justify-content: flex-start;
+  }
+  .feat-preview.chat .msg {
+    background: #fff; border: 1px solid var(--lc-border);
+    border-radius: 10px; padding: 10px 14px;
+    font-size: 0.75rem; color: var(--lc-ink-2); line-height: 1.5;
+    max-width: 80%;
+  }
+  .feat-preview.chat .msg.user {
+    align-self: flex-end; background: var(--lc-ink); color: #fff;
+    border-color: var(--lc-ink);
+  }
+  .feat-preview.search {
+    background: #fff; align-items: flex-start; justify-content: flex-start;
+    padding: 16px; flex-direction: column; gap: 10px;
+  }
+  .feat-preview.search .q {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px; border: 1px solid var(--lc-border); border-radius: 8px;
+    width: 100%; box-sizing: border-box;
+    font-size: 0.75rem; color: var(--lc-ink-3);
+  }
+  .feat-preview.search .hit {
+    width: 100%; padding: 8px 0;
+    border-bottom: 1px solid var(--lc-border-hairline);
+    font-size: 0.75rem; color: var(--lc-ink-2); line-height: 1.5;
+  }
+  .feat-preview.search .hit b { color: var(--lc-ink); font-weight: 500; }
+  .feat-preview.vault {
+    background: #fff;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    padding: 16px; align-items: start;
+  }
+  .feat-preview.vault .doc {
+    aspect-ratio: 3/4;
+    background: var(--lc-bg-sunken);
+    border: 1px solid var(--lc-border);
+    border-radius: 4px;
+    position: relative;
+  }
+  .feat-preview.vault .doc::after {
+    content: ""; position: absolute;
+    top: 25%; left: 15%; right: 15%; height: 2px;
+    background: var(--lc-border-strong);
+    box-shadow:
+      0 6px 0 var(--lc-border-strong),
+      0 12px 0 var(--lc-border-strong),
+      0 18px 0 rgba(0,0,0,0.08);
+  }
+  .feat-preview.clm {
+    background: #fff; padding: 16px;
+    flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 6px;
+  }
+  .feat-preview.clm .row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 10px; border-radius: 6px;
+    font-size: 0.75rem;
+  }
+  .feat-preview.clm .row:nth-child(odd) { background: var(--lc-bg-sunken); }
+  .feat-preview.clm .row .pill {
+    font-size: 0.625rem; padding: 2px 8px; border-radius: 999px;
+    background: rgba(102,2,60,0.10); color: var(--lc-burgundy); font-weight: 600;
+  }
+
+  /* ======= Pricing ======= */
+  .pricing { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
+  .price-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+  }
+  .price-card {
+    background: var(--lc-bg-alt);
+    border: 1px solid var(--lc-border);
+    border-radius: var(--lc-radius-xl);
+    padding: 2rem 1.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .price-card.featured {
+    border-color: var(--lc-burgundy);
+    border-width: 1.5px;
+  }
+  .price-card .icon { width: 64px; height: 64px; }
+  .price-card .icon img { width: 100%; height: 100%; }
+  .price-card .pname {
+    font-size: 1.25rem; font-weight: 500; letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+  .price-card .pname .sub {
+    display: block; font-size: 0.8125rem; color: var(--lc-ink-2);
+    font-weight: 400; margin-top: 2px;
+  }
+  .price-card .amt {
+    font-size: 2rem; font-weight: 600; letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .price-card .amt .per {
+    font-size: 0.875rem; color: var(--lc-ink-2); font-weight: 400;
+  }
+  .price-card .pdesc {
+    font-size: 0.8125rem; color: var(--lc-ink-2); line-height: 1.5;
+  }
+  .price-card ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 8px;
+    font-size: 0.8125rem; line-height: 1.5;
+  }
+  .price-card li { display: flex; gap: 8px; align-items: flex-start; }
+  .price-card li::before {
+    content: "✓"; color: var(--lc-burgundy); font-weight: 600; flex-shrink: 0;
+  }
+  .price-card .pbtn {
+    margin-top: auto; padding: 10px 16px;
+    border-radius: var(--lc-radius-md);
+    font-family: inherit; font-size: 0.8125rem; font-weight: 500;
+    border: 1px solid var(--lc-border-strong); background: transparent;
+    color: var(--lc-ink); cursor: pointer;
+    transition: all var(--lc-t-default) var(--lc-ease);
+  }
+  .price-card .pbtn:hover { background: rgba(0,0,0,0.04); }
+  .price-card.featured .pbtn {
+    background: var(--lc-burgundy); color: #fff; border-color: var(--lc-burgundy);
+  }
+  .price-card.featured .pbtn:hover { opacity: 0.9; background: var(--lc-burgundy); }
+
+  /* ======= FAQ ======= */
+  .faq {
+    padding: 6rem 2rem; max-width: 780px; margin: 0 auto;
+  }
+  .acc { border-top: 1px solid var(--lc-divider); }
+  .acc-item { border-bottom: 1px solid var(--lc-divider); }
+  .acc-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 4px; cursor: pointer; gap: 16px;
+    font-size: 1.125rem; font-weight: 500; letter-spacing: -0.005em;
+  }
+  .acc-q .plus {
+    font-size: 1.5rem; font-weight: 400; line-height: 1;
+    color: var(--lc-ink-2); transition: transform 0.3s var(--lc-ease);
+  }
+  .acc-item.open .acc-q .plus { transform: rotate(45deg); }
+  .acc-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+  .acc-item.open .acc-a { max-height: 360px; padding: 0 4px 24px; }
+  .acc-a p {
+    color: var(--lc-ink-2); font-size: 0.9375rem; line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ======= Footer ======= */
+  footer {
+    background: #000; color: #fff; margin-top: 4rem;
+    padding: 5rem 2rem 3rem;
+  }
+  .foot-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+  }
+  .foot-brand img { height: 28px; margin-bottom: 1.5rem; }
+  .foot-brand .tag {
+    font-size: 2rem; font-weight: 400; letter-spacing: -0.01em;
+    line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .foot-brand .made { height: 32px; opacity: 0.9; }
+  .foot-col h5 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.5); margin: 0 0 1rem; font-weight: 600;
+  }
+  .foot-col ul { list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px; }
+  .foot-col a {
+    color: rgba(255,255,255,0.8); font-size: 0.875rem;
+    transition: color var(--lc-t-default) var(--lc-ease);
+  }
+  .foot-col a:hover { color: #fff; }
+  .foot-bottom {
+    max-width: 1400px; margin: 3rem auto 0; padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem; color: rgba(255,255,255,0.5);
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <img src="../../assets/logo_weiss.png" alt="Legal Cognition" />
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Funktionen</a>
+      <a href="#pricing">Preise</a>
+      <a href="#" class="inactive">Über uns</a>
+      <a href="#" class="inactive">Blog</a>
+      <a href="#" class="inactive">Enterprise</a>
+    </nav>
+    <div class="header-ctas">
+      <div class="lang-toggle">
+        <button class="on">DE</button>
+        <button>EN</button>
+      </div>
+      <button class="btn-ghost">Anmelden</button>
+      <button class="btn-primary">Legal Cognition ausprobieren</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <h1>Recht<br/>bekommen.</h1>
+      <p class="hero-sub">
+        Fragen stellen, Dokumente analysieren und schneller entwerfen mit
+        domänenspezifischer KI — in Deutschland gehostet, DSGVO-konform,
+        ISO 27001 zertifiziert.
+      </p>
+      <form class="auth-form" onsubmit="return false;">
+        <div class="mode-toggle">
+          <button type="button" class="on">Registrieren</button>
+          <button type="button">Anmelden</button>
+        </div>
+        <div class="auth-row">
+          <input class="input" type="email" placeholder="Ihre E-Mail-Adresse" />
+          <button type="submit">Weiter →</button>
+        </div>
+        <p class="privacy">
+          Indem du fortfährst, erkennst du Legal Cognitions
+          <a href="#">Datenschutzrichtlinie</a> und
+          <a href="#">Nutzungsbedingungen</a> an.
+        </p>
+      </form>
+    </div>
+    <div class="hero-visual">
+      <span class="tag">Kanzlei · 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <span class="trust-item">§ 43e BRAO konform</span>
+  <span class="trust-item">§ 203 StGB</span>
+  <span class="trust-item">DSGVO</span>
+  <span class="trust-item">ISO 27001</span>
+  <span class="trust-item">XTS-AES-256 at Rest</span>
+  <span class="trust-item">Made in Germany</span>
+</div>
+
+<section class="features" id="features">
+  <div class="section-eyebrow">Funktionen</div>
+  <h2 class="section-title">Die wichtigsten Werkzeuge<br/>für den juristischen Alltag.</h2>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <span class="eyebrow">Assistent</span>
+      <h3>Chat mit mehreren Modellen</h3>
+      <p>Stellen Sie Ihre Fragen an Claude, GPT-4, Gemini oder Mistral — parallel, im Kontext Ihrer Akten und mit Zitaten auf den Absatz genau.</p>
+      <div class="feat-preview chat">
+        <div class="msg">Bitte fassen Sie mir die wesentlichen Pflichten aus § 43e BRAO zusammen.</div>
+        <div class="msg user" style="max-width:60%;">Nach § 43e BRAO dürfen Rechtsanwält:innen Dienstleister:innen nur …</div>
+        <div class="msg">Soll ich ein Prüfschema für Ihre Mandatsprüfung erstellen?</div>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="eyebrow">Semantische Suche</span>
+      <h3>Recht im Kontext finden</h3>
+      <p>Durchsuchen Sie deutsches Recht — BGB, StGB, Urteile und Kommentare — semantisch, nicht nur nach Stichwort.</p>
+      <div class="feat-preview search">
+        <div class="q">🔍 Haftung bei fehlerhafter Rechtsberatung</div>
+        <div class="hit"><b>BGH IX ZR 88/19</b> — Pflichtverletzung des Anwalts bei …</div>
+        <div class="hit"><b>§ 280 BGB</b> — Schadensersatz wegen Pflichtverletzung</div>
+        <div class="hit"><b>Palandt Kommentar</b> — Anwaltsvertrag, Rz. 14</div>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="eyebrow">Speicher</span>
+      <h3>Dokumente sicher ablegen & analysieren</h3>
+      <p>Rechtsdokumente sicher speichern, organisieren und massenweise analysieren — mit TLS in Transit und XTS-AES-256-Bit at Rest.</p>
+      <div class="feat-preview vault">
+        <div class="doc"></div><div class="doc"></div><div class="doc"></div><div class="doc"></div>
+        <div class="doc"></div><div class="doc"></div><div class="doc"></div><div class="doc"></div>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <span class="eyebrow">CLM</span>
+      <h3>Vertragslebenszyklus im Blick</h3>
+      <p>Fristen, Pflichten und fehlende Eigenschaften werden automatisch extrahiert und auf einem Blick sichtbar.</p>
+      <div class="feat-preview clm">
+        <div class="row"><span>Mietvertrag · Bürofläche München</span><span class="pill">Frist 14 Tage</span></div>
+        <div class="row"><span>NDA · Kanzlei Meier & Partner</span><span>unterzeichnet</span></div>
+        <div class="row"><span>Dienstleistungsvertrag · IT</span><span class="pill">3 fehlend</span></div>
+        <div class="row"><span>AGB — Lieferant Nord GmbH</span><span>aktiv</span></div>
+        <div class="row"><span>Arbeitsvertrag · J. Schmidt</span><span>aktiv</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-eyebrow">Preise</div>
+  <h2 class="section-title">Für jede Kanzleigröße —<br/>von Einzelanwält:in bis Großkanzlei.</h2>
+
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="icon"><img src="../../assets/Icon_free.svg" alt="" /></div>
+      <div class="pname">Free<span class="sub">AI Associate</span></div>
+      <div class="amt">€0<span class="per"> / Monat</span></div>
+      <p class="pdesc">Zum Ausprobieren. Perfekt für erste Gehversuche.</p>
+      <ul>
+        <li>20 Chats / Monat</li>
+        <li>5 Dokumente im Speicher</li>
+        <li>Basis-Modelle</li>
+      </ul>
+      <button class="pbtn">Kostenlos starten</button>
+    </div>
+
+    <div class="price-card featured">
+      <div class="icon"><img src="../../assets/Icon_professional.svg" alt="" /></div>
+      <div class="pname">Professional<span class="sub">AI Counsel</span></div>
+      <div class="amt">€49<span class="per"> / Monat</span></div>
+      <p class="pdesc">Für Einzelanwält:innen mit täglichem KI-Bedarf.</p>
+      <ul>
+        <li>Unbegrenzte Chats</li>
+        <li>500 Dokumente</li>
+        <li>Claude, GPT-4, Gemini</li>
+        <li>Semantische Suche (BGB, StGB)</li>
+      </ul>
+      <button class="pbtn">14 Tage testen</button>
+    </div>
+
+    <div class="price-card">
+      <div class="icon"><img src="../../assets/Icon_business.svg" alt="" /></div>
+      <div class="pname">Business<span class="sub">AI Partner</span></div>
+      <div class="amt">€149<span class="per"> / Monat</span></div>
+      <p class="pdesc">Für kleine Kanzleien mit bis zu 5 Nutzer:innen.</p>
+      <ul>
+        <li>Alles aus Professional</li>
+        <li>5 Nutzer:innen inkl.</li>
+        <li>CLM & Obligations</li>
+        <li>Gemeinsame Vaults</li>
+      </ul>
+      <button class="pbtn">Testen</button>
+    </div>
+
+    <div class="price-card">
+      <div class="icon"><img src="../../assets/Icon_team.svg" alt="" /></div>
+      <div class="pname">Team<span class="sub">ab 10 Personen</span></div>
+      <div class="amt">€29<span class="per"> / Nutzer:in / Mo</span></div>
+      <p class="pdesc">Für mittelgroße Kanzleien und Rechtsabteilungen.</p>
+      <ul>
+        <li>SSO (Google, Microsoft)</li>
+        <li>Berechtigungsgruppen</li>
+        <li>Data Rooms mit Q&A</li>
+        <li>Audit-Log</li>
+      </ul>
+      <button class="pbtn">Vertrieb kontaktieren</button>
+    </div>
+
+    <div class="price-card">
+      <div class="icon"><img src="../../assets/Icon_enterprise.svg" alt="" /></div>
+      <div class="pname">Enterprise<span class="sub">individuell</span></div>
+      <div class="amt" style="font-size:1.5rem;">Auf Anfrage</div>
+      <p class="pdesc">Für Großkanzleien mit spezifischen Anforderungen.</p>
+      <ul>
+        <li>Dediziertes Hosting (EWR)</li>
+        <li>SLA & Support</li>
+        <li>On-prem verfügbar</li>
+        <li>Custom-Modelle</li>
+      </ul>
+      <button class="pbtn">Vertrieb kontaktieren</button>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="section-eyebrow">Häufige Fragen</div>
+  <h2 class="section-title" style="margin-bottom:3rem;">Was Sie wissen sollten.</h2>
+
+  <div class="acc">
+    <div class="acc-item open">
+      <div class="acc-q" onclick="toggleAcc(this)">Was ist Legal Cognition?<span class="plus">+</span></div>
+      <div class="acc-a"><p>Legal Cognition ist eine KI-native Plattform für Anwaltskanzleien und Rechtsabteilungen. Sie kombiniert Assistenten, Dokumentenanalyse, Vertragsmanagement und semantische Suche in einer DSGVO-konformen, in Deutschland gehosteten Umgebung — ISO 27001 zertifiziert.</p></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-q" onclick="toggleAcc(this)">Wo werden meine Daten gespeichert?<span class="plus">+</span></div>
+      <div class="acc-a"><p>Ausschließlich in Rechenzentren innerhalb Deutschlands, betrieben durch ISO 27001-zertifizierte Dienstleister:innen im EWR. Daten in Transit sind per TLS, Daten at Rest per XTS-AES-256-Bit verschlüsselt. Es findet keine Weiterverarbeitung durch die Modellanbieter statt.</p></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-q" onclick="toggleAcc(this)">Welche KI-Modelle werden unterstützt?<span class="plus">+</span></div>
+      <div class="acc-a"><p>Claude (Anthropic), GPT-4 (OpenAI), Gemini (Google), Mistral — je nach Aufgabe wählen Sie selbst. Unsere eigene Retrieval-Schicht Scrivener bindet Ihre Dokumente als Kontext ein.</p></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-q" onclick="toggleAcc(this)">Ist die Nutzung mit § 43e BRAO vereinbar?<span class="plus">+</span></div>
+      <div class="acc-a"><p>Ja. Legal Cognition wurde explizit für die Anforderungen des § 43e BRAO entworfen. Wir unterliegen keinem Zugriff auf Mandatsdaten, schließen Auftragsverarbeitungsverträge und halten das Berufsgeheimnis nach § 203 StGB ein.</p></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-q" onclick="toggleAcc(this)">Kann ich Legal Cognition mit meinem bestehenden DMS verbinden?<span class="plus">+</span></div>
+      <div class="acc-a"><p>Über Connectors für Confluence, SharePoint, OneDrive, Google Drive, Dropbox und Notion — weitere Integrationen auf Anfrage.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="../../assets/logo_weiss.png" alt="Legal Cognition" />
+      <div class="tag">Recht<br/>bekommen.</div>
+      <img class="made" src="../../assets/madeinger_white.png" alt="Made in Germany" />
+    </div>
+    <div class="foot-col">
+      <h5>Produkt</h5>
+      <ul>
+        <li><a href="#">Assistent</a></li>
+        <li><a href="#">Speicher</a></li>
+        <li><a href="#">CLM</a></li>
+        <li><a href="#">Semantische Suche</a></li>
+        <li><a href="#">Data Rooms</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Kanzlei</h5>
+      <ul>
+        <li><a href="#">Über uns</a></li>
+        <li><a href="#">Karriere</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Presse</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Rechtliches</h5>
+      <ul>
+        <li><a href="#">Datenschutz</a></li>
+        <li><a href="#">AGB</a></li>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">ISO 27001</a></li>
+        <li><a href="#">DSGVO</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Legal Cognition GmbH · München</span>
+    <span>hallo@legal-cognition.de</span>
+  </div>
+</footer>
+
+<script>
+  function toggleAcc(el) {
+    el.parentElement.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
