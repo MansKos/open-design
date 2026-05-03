@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Legal Cognition — Type</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 48px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1.page { font-family: var(--lc-font-display); font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .intro { color: var(--lc-ink-2); max-width: 640px; margin-bottom: 3rem; }
+
+  /* Hero family card */
+  .family {
+    border: 1px solid var(--lc-border);
+    border-radius: var(--lc-radius-xl);
+    padding: 40px 44px 36px;
+    background: var(--lc-bg-alt);
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 32px;
+  }
+  .family .word {
+    font-family: var(--lc-font-display);
+    font-size: 9.5rem;
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--lc-ink);
+    font-variation-settings: "wght" 500;
+  }
+  .family .meta {
+    font-family: var(--lc-font-mono);
+    font-size: 0.75rem;
+    color: var(--lc-ink-3);
+    line-height: 1.6;
+    text-align: right;
+  }
+  .family .meta b { display: block; font-family: var(--lc-font-sans); font-size: 0.875rem; font-weight: 500; color: var(--lc-ink); margin-bottom: 6px; letter-spacing: -0.005em; }
+
+  /* Weight ramp */
+  .ramp { border: 1px solid var(--lc-border); border-radius: var(--lc-radius-xl); padding: 28px 32px; background: var(--lc-bg-alt); margin-bottom: 56px; }
+  .ramp .r {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--lc-border-hairline);
+    gap: 24px;
+  }
+  .ramp .r:last-child { border-bottom: 0; }
+  .ramp .label { font-family: var(--lc-font-mono); font-size: 0.75rem; color: var(--lc-ink-3); }
+  .ramp .word { font-family: var(--lc-font-display); font-size: 2.5rem; line-height: 1.1; letter-spacing: -0.015em; color: var(--lc-ink); }
+  .ramp .w400 { font-weight: 400; font-variation-settings: "wght" 400; }
+  .ramp .w500 { font-weight: 500; font-variation-settings: "wght" 500; }
+  .ramp .w600 { font-weight: 600; font-variation-settings: "wght" 600; }
+  .ramp .w700 { font-weight: 700; font-variation-settings: "wght" 700; }
+
+  /* Axis demo */
+  .axis { border: 1px solid var(--lc-border); border-radius: var(--lc-radius-xl); padding: 32px; background: var(--lc-bg-sunken); margin-bottom: 56px; }
+  .axis .row { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 8px 0; }
+  .axis .word { font-family: var(--lc-font-display); font-size: 3rem; line-height: 1; letter-spacing: -0.02em; color: var(--lc-ink); }
+  .axis .tag { font-family: var(--lc-font-mono); font-size: 0.7rem; color: var(--lc-ink-3); }
+
+  /* Usage rows (kept from prior version) */
+  h2.section { font-family: var(--lc-font-display); font-size: 1.125rem; font-weight: 500; margin: 3rem 0 0.5rem; text-align: left; letter-spacing: -0.005em; }
+  .row { display: grid; grid-template-columns: 160px 1fr; align-items: baseline; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--lc-border-hairline); }
+  .meta { font-family: var(--lc-font-mono); font-size: 0.75rem; color: var(--lc-ink-3); line-height: 1.5; }
+  .meta b { display: block; font-family: var(--lc-font-sans); font-size: 0.8125rem; font-weight: 500; color: var(--lc-ink); margin-bottom: 4px; letter-spacing: -0.005em; }
+  .sample { color: var(--lc-ink); }
+  .s-hero { font-family: var(--lc-font-display); font-size: 3.5rem; font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; }
+  .s-h2 { font-family: var(--lc-font-display); font-size: 2.25rem; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; }
+  .s-plan-price { font-size: 2rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+  .s-plan-name { font-size: 1.5rem; font-weight: 500; line-height: 1.3; }
+  .s-feature { font-size: 1.125rem; font-weight: 500; line-height: 1.4; }
+  .s-nav { font-size: 1rem; font-weight: 400; }
+  .s-body { font-size: 0.9375rem; line-height: 1.6; color: var(--lc-ink-2); max-width: 560px; }
+  .s-caption { font-size: 0.8125rem; color: var(--lc-ink-3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="page">Type</h1>
+  <p class="intro lc-body">
+    Brand sans is <b style="color:var(--lc-ink);font-weight:500;">Hikasami</b> — loaded as four static cuts (Regular&nbsp;400, Medium&nbsp;500, SemiBold&nbsp;600, Bold&nbsp;700) plus a variable cut <code>Hikasami VF</code> (100–900 weight axis) for fluid display type. System sans is retained as fallback. Size and whitespace carry hierarchy; product copy stays at 400/500 with 600 reserved for plan prices. Display tracking tightens to <code>−0.01em</code>; body stays at 0.
+  </p>
+
+  <!-- Family hero -->
+  <div class="family">
+    <div class="word">Hikasami</div>
+    <div class="meta">
+      <b>Brand sans</b>
+      4 static cuts<br/>
+      VF · wght 100–900<br/>
+      woff2 · self-hosted
+    </div>
+  </div>
+
+  <!-- Weight ramp -->
+  <h2 class="section">Static weight ramp</h2>
+  <div class="ramp">
+    <div class="r"><div class="label">400 · Regular</div><div class="word w400">Recht bekommen.</div></div>
+    <div class="r"><div class="label">500 · Medium</div><div class="word w500">Recht bekommen.</div></div>
+    <div class="r"><div class="label">600 · SemiBold</div><div class="word w600">Recht bekommen.</div></div>
+    <div class="r"><div class="label">700 · Bold</div><div class="word w700">Recht bekommen.</div></div>
+  </div>
+
+  <!-- Variable axis -->
+  <h2 class="section">Variable axis · Hikasami VF</h2>
+  <div class="axis">
+    <div class="row"><div class="tag">wght 200</div><div class="word" style="font-family:var(--lc-font-display);font-variation-settings:'wght' 200;">Domänenspezifische KI</div></div>
+    <div class="row"><div class="tag">wght 350</div><div class="word" style="font-family:var(--lc-font-display);font-variation-settings:'wght' 350;">Domänenspezifische KI</div></div>
+    <div class="row"><div class="tag">wght 500</div><div class="word" style="font-family:var(--lc-font-display);font-variation-settings:'wght' 500;">Domänenspezifische KI</div></div>
+    <div class="row"><div class="tag">wght 650</div><div class="word" style="font-family:var(--lc-font-display);font-variation-settings:'wght' 650;">Domänenspezifische KI</div></div>
+    <div class="row"><div class="tag">wght 800</div><div class="word" style="font-family:var(--lc-font-display);font-variation-settings:'wght' 800;">Domänenspezifische KI</div></div>
+  </div>
+
+  <!-- In-product usage -->
+  <h2 class="section">Display</h2>
+  <div class="row">
+    <div class="meta"><b>Hero</b>56 / 67 · 400<br/>tracking −0.01em<br/>Hikasami VF</div>
+    <div class="sample s-hero">Recht<br/>bekommen.</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Section H2</b>36 / 45 · 400<br/>tracking −0.01em<br/>Hikasami VF</div>
+    <div class="sample s-h2">Die wichtigsten<br/>Werkzeuge für den juristischen Alltag.</div>
+  </div>
+
+  <h2 class="section">Product chrome</h2>
+  <div class="row">
+    <div class="meta"><b>Plan price</b>32 / 38 · 600</div>
+    <div class="sample s-plan-price">€0 <span style="font-weight:400;color:var(--lc-ink-2);font-size:1rem;">/ mo</span></div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Plan name</b>24 / 31 · 500</div>
+    <div class="sample s-plan-name">Professional <span style="color:var(--lc-ink-2);font-weight:400;font-size:1rem;">(AI Counsel)</span></div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Feature / FAQ</b>18 / 25 · 500</div>
+    <div class="sample s-feature">Was ist Legal Cognition?</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Nav link</b>16 · 400</div>
+    <div class="sample s-nav">Funktionen · Preise · Anmelden</div>
+  </div>
+
+  <h2 class="section">Body</h2>
+  <div class="row">
+    <div class="meta"><b>Body</b>15 / 24 · 400<br/>ink/70</div>
+    <div class="sample s-body">Fragen stellen, Dokumente analysieren und schneller entwerfen mit domänenspezifischer KI. Rechtsdokumente sicher speichern, organisieren und massenweise analysieren — mit TLS in Transit und XTS-AES-256-Bit at Rest.</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Caption</b>13 · 400<br/>ink/50</div>
+    <div class="sample s-caption">Indem du fortfährst, erkennst du Legal Cognitions Datenschutzrichtlinie an.</div>
+  </div>
+
+  <h2 class="section">Mono</h2>
+  <div class="row">
+    <div class="meta"><b>Mono</b>ui-monospace</div>
+    <div class="sample lc-mono" style="font-size:0.9375rem;">§ 43e BRAO · § 203 StGB · DSGVO · ISO 27001</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Legal Cognition — Colors</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 40px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 2rem; margin-bottom: 2rem; }
+  h2 { font-size: 1.25rem; text-align: left; margin: 2.5rem 0 1rem; letter-spacing: -0.01em; font-weight: 500; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .swatch {
+    border: 1px solid var(--lc-border);
+    border-radius: var(--lc-radius-lg);
+    overflow: hidden;
+    background: var(--lc-bg-alt);
+  }
+  .chip { height: 96px; }
+  .chip.bd { border-bottom: 1px solid var(--lc-border); }
+  .meta { padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+  .name { font-size: 0.8125rem; font-weight: 500; color: var(--lc-ink); letter-spacing: -0.005em; }
+  .hex { font-family: var(--lc-font-mono); font-size: 0.75rem; color: var(--lc-ink-3); }
+  .role { font-size: 0.75rem; color: var(--lc-ink-2); line-height: 1.4; }
+  .dark-panel { background: #1a1a1a; padding: 24px; border-radius: 16px; margin-top: 1rem; }
+  .dark-panel .swatch { background: #000; border-color: rgba(255,255,255,0.10); }
+  .dark-panel .name { color: #fff; }
+  .dark-panel .hex { color: rgba(255,255,255,0.5); }
+  .dark-panel .role { color: rgba(255,255,255,0.7); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Colors</h1>
+  <p class="lc-subtitle" style="max-width: 640px; margin-bottom: 2rem;">
+    Legal Cognition is a monochrome ink-on-paper system with a single burgundy accent. Two themes — warm paper (default) and near-black — toggled via <code>html[data-theme]</code>.
+  </p>
+
+  <h2>Light surfaces</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip bd" style="background:#faf9f5"></div><div class="meta"><span class="name">Background</span><span class="hex">#faf9f5</span><span class="role">Warm paper page</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:#ffffff"></div><div class="meta"><span class="name">Surface alt</span><span class="hex">#ffffff</span><span class="role">Cards, form containers</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:#e8e6e1"></div><div class="meta"><span class="name">Surface sunken</span><span class="hex">#e8e6e1</span><span class="role">Feature stage</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:#d4d1cb"></div><div class="meta"><span class="name">Hero backdrop</span><span class="hex">#d4d1cb</span><span class="role">Behind lawyer image</span></div></div>
+  </div>
+
+  <h2>Ink (light mode text)</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip bd" style="background:#213547"></div><div class="meta"><span class="name">Ink</span><span class="hex">#213547</span><span class="role">Primary text</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:rgba(33,53,71,0.70)"></div><div class="meta"><span class="name">Ink/70</span><span class="hex">rgba(33,53,71,.70)</span><span class="role">Secondary text</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:rgba(33,53,71,0.50)"></div><div class="meta"><span class="name">Ink/50</span><span class="hex">rgba(33,53,71,.50)</span><span class="role">Muted, nav inactive</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:rgba(33,53,71,0.15)"></div><div class="meta"><span class="name">Ink/15</span><span class="hex">rgba(33,53,71,.15)</span><span class="role">Dividers on ink</span></div></div>
+  </div>
+
+  <h2>Brand — Burgundy (primary CTA)</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip bd" style="background:#66023c"></div><div class="meta"><span class="name">Burgundy</span><span class="hex">#66023c</span><span class="role">"Legal Cognition ausprobieren" button</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:#4f022e"></div><div class="meta"><span class="name">Burgundy hover</span><span class="hex">#4f022e</span><span class="role">CTA hover (or opacity:.9)</span></div></div>
+  </div>
+
+  <h2>Legacy TipTap violet (editor only)</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip bd" style="background:rgb(239,238,255)"></div><div class="meta"><span class="name">Brand 50</span><span class="hex">rgb(239,238,255)</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:rgb(195,189,255)"></div><div class="meta"><span class="name">Brand 200</span><span class="hex">rgb(195,189,255)</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:rgb(122,82,255)"></div><div class="meta"><span class="name">Brand 400</span><span class="hex">rgb(122,82,255)</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:rgb(98,41,255)"></div><div class="meta"><span class="name">Brand 500</span><span class="hex">rgb(98,41,255)</span><span class="role">Canonical editor violet</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:rgb(75,0,204)"></div><div class="meta"><span class="name">Brand 700</span><span class="hex">rgb(75,0,204)</span></div></div>
+  </div>
+
+  <h2>Semantic status</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip bd" style="background:hsl(147,99%,41%)"></div><div class="meta"><span class="name">Success</span><span class="hex">hsl(147,99%,41%)</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:hsl(52,100%,41%)"></div><div class="meta"><span class="name">Warning</span><span class="hex">hsl(52,100%,41%)</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:hsl(7,100%,54%)"></div><div class="meta"><span class="name">Danger</span><span class="hex">hsl(7,100%,54%)</span></div></div>
+    <div class="swatch"><div class="chip bd" style="background:#ef4444"></div><div class="meta"><span class="name">Form error</span><span class="hex">#ef4444</span></div></div>
+  </div>
+
+  <h2>Dark theme</h2>
+  <div class="dark-panel">
+    <div class="grid">
+      <div class="swatch"><div class="chip" style="background:#1a1a1a;border-bottom:1px solid rgba(255,255,255,.1)"></div><div class="meta"><span class="name">Background</span><span class="hex">#1a1a1a</span><span class="role">Page</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#000000;border-bottom:1px solid rgba(255,255,255,.1)"></div><div class="meta"><span class="name">Surface alt</span><span class="hex">#000000</span><span class="role">Header, cards</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#ffffff"></div><div class="meta"><span class="name">Ink</span><span class="hex">#ffffff</span><span class="role">Primary text</span></div></div>
+      <div class="swatch"><div class="chip" style="background:rgba(255,255,255,.70);border-bottom:1px solid rgba(255,255,255,.1)"></div><div class="meta"><span class="name">Ink/70</span><span class="hex">rgba(255,255,255,.70)</span></div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

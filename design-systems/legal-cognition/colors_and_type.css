@@ -1,0 +1,318 @@
+/* =========================================================
+   Legal Cognition — Colors & Type
+   Extracted from LC7 codebase (tailwind.config.js, src/styles/_variables.scss,
+   src/components/Header.tsx, src/components/LandingPage.tsx).
+
+   Two themes: light (warm paper #faf9f5) and dark (#1a1a1a / #000).
+   Brand signature accent is the deep burgundy #66023c ("LC burgundy"),
+   used on primary CTAs. The legacy TipTap palette also retains a violet
+   secondary palette (--tt-brand-color-500 = #6229ff) used inside the
+   editor surfaces — kept here for completeness.
+
+   Brand typeface: Hikasami (custom). Loaded as static cuts plus the
+   variable font for fluid weight control.
+   ========================================================= */
+
+/* -------- Hikasami — brand sans -------- */
+@font-face {
+  font-family: "Hikasami";
+  src: url("fonts/Hikasami-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hikasami";
+  src: url("fonts/Hikasami-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hikasami";
+  src: url("fonts/Hikasami-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hikasami";
+  src: url("fonts/Hikasami-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Variable cut — full 100–900 axis. Use via font-family: "Hikasami VF". */
+@font-face {
+  font-family: "Hikasami VF";
+  src: url("fonts/Hikasami-VF.woff2") format("woff2-variations"),
+       url("fonts/Hikasami-VF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* -------- Base surfaces (light / "paper") -------- */
+  --lc-bg:              #faf9f5;   /* page background (warm off-white) */
+  --lc-bg-alt:          #ffffff;   /* cards, form containers */
+  --lc-bg-sunken:       #e8e6e1;   /* feature stage / sunken surfaces */
+  --lc-bg-lawyer:       #d4d1cb;   /* hero image backdrop */
+
+  /* -------- Ink (light mode text) -------- */
+  --lc-ink:             #213547;   /* primary text — deep slate-navy */
+  --lc-ink-2:           rgba(33, 53, 71, 0.70);  /* secondary text */
+  --lc-ink-3:           rgba(33, 53, 71, 0.50);  /* muted, nav inactive */
+  --lc-ink-4:           rgba(33, 53, 71, 0.15);  /* dividers on ink */
+
+  /* -------- Border system (light) -------- */
+  --lc-border:          rgba(0, 0, 0, 0.08);    /* card borders */
+  --lc-border-strong:   rgba(0, 0, 0, 0.15);    /* inputs / buttons */
+  --lc-border-hairline: rgba(0, 0, 0, 0.06);    /* header divider */
+  --lc-divider:         rgba(0, 0, 0, 0.10);    /* accordion dividers */
+
+  /* -------- Brand: burgundy (primary CTA) -------- */
+  --lc-burgundy:        #66023c;
+  --lc-burgundy-hover:  #4f022e;
+  --lc-burgundy-fg:     #ffffff;
+
+  /* -------- Legacy TipTap violet (editor only) -------- */
+  --tt-brand-50:        rgb(239, 238, 255);
+  --tt-brand-100:       rgb(222, 219, 255);
+  --tt-brand-200:       rgb(195, 189, 255);
+  --tt-brand-300:       rgb(157, 138, 255);
+  --tt-brand-400:       rgb(122, 82, 255);
+  --tt-brand-500:       rgb(98, 41, 255);   /* canonical brand violet */
+  --tt-brand-600:       rgb(84, 0, 229);
+  --tt-brand-700:       rgb(75, 0, 204);
+  --tt-brand-800:       rgb(56, 0, 153);
+  --tt-brand-900:       rgb(43, 25, 102);
+
+  /* -------- Semantic status -------- */
+  --lc-success:         hsl(147, 99%, 41%);
+  --lc-warning:         hsl(52, 100%, 41%);
+  --lc-danger:          hsl(7, 100%, 54%);
+  --lc-danger-soft:     #ef4444;           /* form errors */
+
+  /* -------- Neutral scale (light) -------- */
+  --lc-gray-50:  rgb(250, 250, 250);
+  --lc-gray-100: rgb(244, 244, 245);
+  --lc-gray-200: rgb(234, 234, 235);
+  --lc-gray-300: rgb(213, 214, 215);
+  --lc-gray-400: rgb(166, 167, 171);
+  --lc-gray-500: rgb(125, 127, 130);
+  --lc-gray-600: rgb(83, 86, 90);
+  --lc-gray-700: rgb(64, 65, 69);
+  --lc-gray-800: rgb(44, 45, 48);
+  --lc-gray-900: rgb(34, 35, 37);
+
+  /* -------- Radii -------- */
+  --lc-radius-xxs: 2px;
+  --lc-radius-xs:  4px;
+  --lc-radius-sm:  6px;   /* buttons, pills */
+  --lc-radius-md:  8px;   /* inputs, plan buttons */
+  --lc-radius-lg:  12px;  /* surfaces inside dropdowns */
+  --lc-radius-xl:  16px;  /* form / pricing cards, menu panels */
+
+  /* -------- Shadow system -------- */
+  --lc-shadow-sm:
+    0 1px 2px rgba(17, 24, 39, 0.04);
+  --lc-shadow-md:
+    0 16px 48px 0 rgba(17, 24, 39, 0.04),
+    0 12px 24px 0 rgba(17, 24, 39, 0.04),
+    0 6px  8px  0 rgba(17, 24, 39, 0.02),
+    0 2px  3px  0 rgba(17, 24, 39, 0.02);
+  --lc-shadow-dropdown:
+    0 20px 60px rgba(0, 0, 0, 0.08);
+  --lc-shadow-hover:
+    0 8px 20px rgba(33, 53, 71, 0.15);
+
+  /* -------- Transitions -------- */
+  --lc-t-short:   0.1s;
+  --lc-t-default: 0.2s;
+  --lc-t-long:    0.3s;
+  --lc-t-slow:    0.64s;
+  --lc-ease:      cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  --lc-ease-out:  cubic-bezier(0.65, 0.05, 0.36, 1);
+
+  /* -------- Backdrop blur -------- */
+  --lc-backdrop-header: blur(10px);
+  --lc-backdrop-menu:   blur(20px);
+
+  /* -------- Header bg (translucent) -------- */
+  --lc-header-bg:       rgba(250, 249, 245, 0.90);
+  --lc-header-border:   rgba(0, 0, 0, 0.06);
+
+  /* ============================================================
+     TYPOGRAPHY
+     Brand sans is Hikasami — loaded above as static cuts (400/500/
+     600/700) plus a variable cut ("Hikasami VF", 100–900) for fluid
+     weight on display type. System fallback retained for FOUT.
+     Characteristics: light display weights (400), tight tracking,
+     generous line-height (1.2 display, 1.6 body). Landing treats
+     size as the primary hierarchy cue — weight stays at 400/500.
+     ============================================================ */
+
+  --lc-font-sans:
+    "Hikasami", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --lc-font-display:
+    "Hikasami VF", "Hikasami", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --lc-font-serif:
+    "New York", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --lc-font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Size scale observed in LandingPage.tsx / Header.tsx */
+  --lc-text-xs:   0.8125rem;  /* 13px — nav buttons, privacy copy */
+  --lc-text-sm:   0.875rem;   /* 14px — dropdown titles */
+  --lc-text-base: 0.9375rem;  /* 15px — body default */
+  --lc-text-md:   1rem;       /* 16px — nav links */
+  --lc-text-lg:   1.125rem;   /* 18px — feature / FAQ question */
+  --lc-text-xl:   1.5rem;     /* 24px — plan name */
+  --lc-text-2xl:  2rem;       /* 32px — plan price */
+  --lc-text-3xl:  2.25rem;    /* 36px — section headline */
+  --lc-text-4xl:  3.5rem;     /* 56px — hero headline */
+
+  /* Weight scale — the product is almost entirely 400 / 500 / 600 */
+  --lc-fw-regular:   400;
+  --lc-fw-medium:    500;
+  --lc-fw-semibold:  600;
+  --lc-fw-bold:      700;
+
+  /* Tracking */
+  --lc-tracking-tight:  -0.01em;
+  --lc-tracking-snug:   -0.005em;
+  --lc-tracking-normal: 0;
+}
+
+/* =========================================================
+   DARK THEME (attribute set on <html data-theme="dark">)
+   Used in Header.tsx, LandingPage.tsx via MutationObserver.
+   ========================================================= */
+html[data-theme="dark"],
+.dark {
+  --lc-bg:              #1a1a1a;
+  --lc-bg-alt:          #000000;
+  --lc-bg-sunken:       #111111;
+  --lc-bg-lawyer:       #000000;
+
+  --lc-ink:             #ffffff;
+  --lc-ink-2:           rgba(255, 255, 255, 0.70);
+  --lc-ink-3:           rgba(255, 255, 255, 0.50);
+  --lc-ink-4:           rgba(255, 255, 255, 0.15);
+
+  --lc-border:          rgba(255, 255, 255, 0.10);
+  --lc-border-strong:   rgba(255, 255, 255, 0.15);
+  --lc-border-hairline: rgba(255, 255, 255, 0.06);
+  --lc-divider:         rgba(255, 255, 255, 0.10);
+
+  --lc-header-bg:       rgba(0, 0, 0, 0.95);
+  --lc-header-border:   rgba(255, 255, 255, 0.06);
+
+  --lc-shadow-md:
+    0 16px 48px 0 rgba(0, 0, 0, 0.50),
+    0 12px 24px 0 rgba(0, 0, 0, 0.24),
+    0 6px  8px  0 rgba(0, 0, 0, 0.22),
+    0 2px  3px  0 rgba(0, 0, 0, 0.12);
+  --lc-shadow-dropdown: 0 20px 60px rgba(0, 0, 0, 0.30);
+  --lc-shadow-hover:    0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================================
+   SEMANTIC ELEMENT STYLES
+   Safe defaults that match the landing page. Import this file
+   and bare HTML looks like Legal Cognition out of the box.
+   ========================================================= */
+
+html, body {
+  background: var(--lc-bg);
+  color: var(--lc-ink);
+  font-family: var(--lc-font-sans);
+  font-size: var(--lc-text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+  transition: background-color var(--lc-t-long) ease,
+              color var(--lc-t-long) ease;
+}
+
+h1, .lc-h1 {
+  font-family: var(--lc-font-display);
+  font-size: var(--lc-text-4xl);
+  font-weight: var(--lc-fw-regular);
+  line-height: 1.2;
+  letter-spacing: var(--lc-tracking-tight);
+  color: var(--lc-ink);
+  margin: 0;
+}
+
+h2, .lc-h2 {
+  font-family: var(--lc-font-display);
+  font-size: var(--lc-text-3xl);
+  font-weight: var(--lc-fw-regular);
+  line-height: 1.25;
+  letter-spacing: var(--lc-tracking-tight);
+  color: var(--lc-ink);
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+h3, .lc-h3 {
+  font-size: var(--lc-text-xl);
+  font-weight: var(--lc-fw-medium);
+  line-height: 1.3;
+  color: var(--lc-ink);
+  margin: 0;
+}
+
+h4, .lc-h4 {
+  font-size: var(--lc-text-lg);
+  font-weight: var(--lc-fw-medium);
+  color: var(--lc-ink);
+  margin: 0;
+}
+
+p, .lc-body {
+  font-size: var(--lc-text-base);
+  line-height: 1.6;
+  color: var(--lc-ink-2);
+  margin: 0;
+}
+
+.lc-subtitle {
+  font-size: var(--lc-text-md);
+  color: var(--lc-ink-2);
+  line-height: 1.6;
+}
+
+.lc-caption {
+  font-size: var(--lc-text-xs);
+  color: var(--lc-ink-3);
+  line-height: 1.5;
+  letter-spacing: var(--lc-tracking-snug);
+}
+
+a {
+  color: var(--lc-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color var(--lc-t-default) ease;
+}
+a:hover { color: var(--lc-burgundy); }
+
+code, pre, .lc-mono {
+  font-family: var(--lc-font-mono);
+  font-size: 0.9em;
+}
+
+hr, .lc-divider {
+  border: 0;
+  border-top: 1px solid var(--lc-divider);
+  margin: 1.5rem 0;
+}

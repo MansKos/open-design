@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Legal Cognition — Brand</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 48px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1rem; font-weight: 500; text-align: left; margin: 2.5rem 0 0.75rem; letter-spacing: -0.005em; }
+  .intro { color: var(--lc-ink-2); max-width: 640px; margin-bottom: 2rem; }
+  .grid { display: grid; gap: 16px; }
+  .logo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .logo-card {
+    border: 1px solid var(--lc-border);
+    border-radius: var(--lc-radius-lg);
+    padding: 40px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 160px;
+  }
+  .logo-card.light { background: var(--lc-bg-alt); }
+  .logo-card.dark { background: #000; }
+  .logo-card img { height: 32px; }
+  .logo-card.light img { filter: invert(1); }
+
+  .plans { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .plan {
+    border: 1px solid var(--lc-border);
+    border-radius: var(--lc-radius-lg);
+    padding: 20px;
+    background: var(--lc-bg-alt);
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    text-align: center;
+  }
+  .plan img { width: 64px; height: 64px; }
+  .plan .n { font-size: 0.875rem; font-weight: 500; }
+  .plan .r { font-size: 0.75rem; color: var(--lc-ink-2); }
+
+  .mini-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .mini {
+    border: 1px solid var(--lc-border);
+    background: var(--lc-bg-alt);
+    border-radius: var(--lc-radius-md);
+    padding: 16px; text-align: center;
+    display: flex; flex-direction: column; gap: 8px; align-items: center;
+  }
+  .mini img { width: 32px; height: 32px; object-fit: contain; }
+  .mini .n { font-size: 0.75rem; color: var(--lc-ink-2); }
+
+  .tagline {
+    border: 1px solid var(--lc-border);
+    border-radius: var(--lc-radius-xl);
+    padding: 64px;
+    background: var(--lc-bg-alt);
+    text-align: center;
+  }
+  .tagline .line {
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .tagline .sub { margin-top: 1rem; color: var(--lc-ink-2); }
+
+  .madein { display: flex; gap: 16px; align-items: center; }
+  .madein .light { background: #fff; padding: 20px; border: 1px solid var(--lc-border); border-radius: 8px; }
+  .madein .dark { background: #000; padding: 20px; border-radius: 8px; }
+  .madein img { height: 36px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Brand</h1>
+  <p class="intro lc-body">Identity assets: the wordmark, the botanical plan iconography, model/connector avatars, and the Made‑in‑Germany promise.</p>
+
+  <h2>Wordmark</h2>
+  <div class="logo-row">
+    <div class="logo-card light"><img src="../assets/logo_weiss.png" alt="Legal Cognition" /></div>
+    <div class="logo-card dark"><img src="../assets/logo_weiss.png" alt="Legal Cognition" /></div>
+  </div>
+  <p class="lc-caption" style="margin-top:12px;">The wordmark ships white; <code>filter: invert(1)</code> produces the light-mode version. Clear-space min = logo height; minimum size = 24px.</p>
+
+  <h2>Tagline</h2>
+  <div class="tagline">
+    <div class="line">Recht<br/>bekommen.</div>
+    <div class="sub lc-body">The brand promise. Played as a type-animation in the footer — loops forward/reverse.</div>
+  </div>
+
+  <h2>Plan iconography (botanical system)</h2>
+  <div class="plans">
+    <div class="plan"><img src="../assets/Icon_free.svg" alt="" /><div class="n">Free</div><div class="r">AI Associate · seed</div></div>
+    <div class="plan"><img src="../assets/Icon_professional.svg" alt="" /><div class="n">Professional</div><div class="r">AI Counsel · sprout</div></div>
+    <div class="plan"><img src="../assets/Icon_business.svg" alt="" /><div class="n">Business</div><div class="r">AI Partner · canopy</div></div>
+    <div class="plan"><img src="../assets/Icon_team.svg" alt="" /><div class="n">Team</div><div class="r">network</div></div>
+    <div class="plan"><img src="../assets/Icon_enterprise.svg" alt="" /><div class="n">Enterprise</div><div class="r">layered stack</div></div>
+  </div>
+
+  <h2>Model avatars</h2>
+  <div class="mini-grid" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="mini"><img src="../assets/models/claude.svg" alt="" /><div class="n">Claude</div></div>
+    <div class="mini"><img src="../assets/models/openai.svg" alt="" /><div class="n">OpenAI</div></div>
+    <div class="mini"><img src="../assets/models/gemini.svg" alt="" /><div class="n">Gemini</div></div>
+    <div class="mini"><img src="../assets/models/mistral.svg" alt="" /><div class="n">Mistral</div></div>
+    <div class="mini"><img src="../assets/models/scrivener.svg" alt="" /><div class="n">Scrivener</div></div>
+  </div>
+
+  <h2>Connector logos</h2>
+  <div class="mini-grid">
+    <div class="mini"><img src="../assets/connectors/Confluence.svg" alt="" /><div class="n">Confluence</div></div>
+    <div class="mini"><img src="../assets/connectors/Dropbox.png" alt="" /><div class="n">Dropbox</div></div>
+    <div class="mini"><img src="../assets/connectors/GoogleDrive.png" alt="" /><div class="n">Drive</div></div>
+    <div class="mini"><img src="../assets/connectors/Notion.png" alt="" /><div class="n">Notion</div></div>
+    <div class="mini"><img src="../assets/connectors/OneDrive.png" alt="" /><div class="n">OneDrive</div></div>
+    <div class="mini"><img src="../assets/connectors/SharePoint.png" alt="" /><div class="n">SharePoint</div></div>
+  </div>
+
+  <h2>Made in Germany</h2>
+  <div class="madein">
+    <div class="light"><img src="../assets/madeinger_black.png" alt="Made in Germany" /></div>
+    <div class="dark"><img src="../assets/madeinger_white.png" alt="Made in Germany" /></div>
+  </div>
+  <p class="lc-caption" style="margin-top:12px;">Shown in the footer adjacent to the wordmark. Non-optional — this is a legal-tech trust signal alongside BRAO/DSGVO/ISO 27001 copy.</p>
+
+</div>
+</body>
+</html>

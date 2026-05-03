@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Legal Cognition — Spacing, Radii, Shadows</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 48px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 2rem; font-weight: 400; margin-bottom: 2rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1.125rem; font-weight: 500; margin: 2.5rem 0 1rem; text-align: left; letter-spacing: -0.005em; }
+  .bar { display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 20px; padding: 10px 0; }
+  .bar .label { font-family: var(--lc-font-mono); font-size: 0.75rem; color: var(--lc-ink-2); }
+  .bar .bg { background: var(--lc-bg-sunken); height: 14px; border-radius: 2px; }
+  .bar .val { font-family: var(--lc-font-mono); font-size: 0.75rem; color: var(--lc-ink-3); text-align: right; }
+  .radii { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .radius-card {
+    background: var(--lc-bg-alt);
+    border: 1px solid var(--lc-border);
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 6px;
+  }
+  .radius-card .v { font-family: var(--lc-font-mono); font-size: 0.75rem; color: var(--lc-ink-3); }
+  .radius-card .n { font-size: 0.8125rem; color: var(--lc-ink); font-weight: 500; }
+  .shadow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .shadow-card {
+    background: var(--lc-bg-alt);
+    border-radius: 12px;
+    padding: 32px 20px;
+    display: flex; flex-direction: column; gap: 8px; align-items: center;
+  }
+  .s-card-1 { box-shadow: 0 1px 2px rgba(17,24,39,.04); }
+  .s-card-2 { box-shadow: 0 16px 48px 0 rgba(17,24,39,.04), 0 12px 24px 0 rgba(17,24,39,.04), 0 6px 8px 0 rgba(17,24,39,.02), 0 2px 3px 0 rgba(17,24,39,.02); }
+  .s-card-3 { box-shadow: 0 20px 60px rgba(0,0,0,.08); }
+  .s-card-4 { box-shadow: 0 8px 20px rgba(33,53,71,.15); }
+  .shadow-card .name { font-weight: 500; font-size: 0.875rem; }
+  .shadow-card .role { font-size: 0.75rem; color: var(--lc-ink-2); }
+  .transit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .t-card { background: var(--lc-bg-alt); border: 1px solid var(--lc-border); border-radius: 12px; padding: 20px; }
+  .t-card .n { font-family: var(--lc-font-mono); font-size: 0.75rem; color: var(--lc-ink-3); }
+  .t-card .v { font-size: 1.5rem; font-weight: 500; margin: 4px 0; }
+  .t-card .r { font-size: 0.75rem; color: var(--lc-ink-2); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Spacing, Radii, Shadows</h1>
+
+  <h2>Space scale</h2>
+  <div>
+    <div class="bar"><span class="label">0.25rem</span><div class="bg" style="width:4px;"></div><span class="val">4px</span></div>
+    <div class="bar"><span class="label">0.5rem</span><div class="bg" style="width:8px;"></div><span class="val">8px · gap-sm</span></div>
+    <div class="bar"><span class="label">0.75rem</span><div class="bg" style="width:12px;"></div><span class="val">12px</span></div>
+    <div class="bar"><span class="label">1rem</span><div class="bg" style="width:16px;"></div><span class="val">16px · gap-md</span></div>
+    <div class="bar"><span class="label">1.5rem</span><div class="bg" style="width:24px;"></div><span class="val">24px · gap-lg</span></div>
+    <div class="bar"><span class="label">2rem</span><div class="bg" style="width:32px;"></div><span class="val">32px · card pad</span></div>
+    <div class="bar"><span class="label">2.5rem</span><div class="bg" style="width:40px;"></div><span class="val">40px · card pad-y</span></div>
+    <div class="bar"><span class="label">4rem</span><div class="bg" style="width:64px;"></div><span class="val">64px · hero gap</span></div>
+    <div class="bar"><span class="label">6rem</span><div class="bg" style="width:96px;"></div><span class="val">96px · section</span></div>
+    <div class="bar"><span class="label">8rem</span><div class="bg" style="width:128px;"></div><span class="val">128px · hero top</span></div>
+    <div class="bar"><span class="label">12rem</span><div class="bg" style="width:192px;"></div><span class="val">192px · hero bottom</span></div>
+  </div>
+
+  <h2>Corner radii</h2>
+  <div class="radii">
+    <div class="radius-card" style="border-radius:2px;"><span class="v">2px</span><span class="n">xxs</span></div>
+    <div class="radius-card" style="border-radius:4px;"><span class="v">4px</span><span class="n">xs</span></div>
+    <div class="radius-card" style="border-radius:6px;"><span class="v">6px</span><span class="n">sm · buttons</span></div>
+    <div class="radius-card" style="border-radius:8px;"><span class="v">8px</span><span class="n">md · inputs</span></div>
+    <div class="radius-card" style="border-radius:12px;"><span class="v">12px</span><span class="n">lg · features</span></div>
+    <div class="radius-card" style="border-radius:16px;"><span class="v">16px</span><span class="n">xl · cards</span></div>
+  </div>
+
+  <h2>Shadows</h2>
+  <div class="shadow-grid">
+    <div class="shadow-card s-card-1"><span class="name">Subtle</span><span class="role">1px · hairline lift</span></div>
+    <div class="shadow-card s-card-2"><span class="name">Elevated</span><span class="role">4-layer navy stack</span></div>
+    <div class="shadow-card s-card-3"><span class="name">Dropdown</span><span class="role">menu panels</span></div>
+  </div>
+  <div class="shadow-grid" style="margin-top:24px;grid-template-columns:1fr;max-width:360px;">
+    <div class="shadow-card s-card-4"><span class="name">Hover</span><span class="role">0 8px 20px rgba(33,53,71,.15)</span></div>
+  </div>
+
+  <h2>Transitions</h2>
+  <div class="transit">
+    <div class="t-card"><span class="n">short</span><div class="v">0.1s</div><span class="r">small state toggles</span></div>
+    <div class="t-card"><span class="n">default</span><div class="v">0.2s</div><span class="r">hover, dropdown</span></div>
+    <div class="t-card"><span class="n">long</span><div class="v">0.3s</div><span class="r">accordion, theme</span></div>
+    <div class="t-card"><span class="n">slow</span><div class="v">0.64s</div><span class="r">hero fades</span></div>
+  </div>
+  <p class="lc-caption" style="margin-top:16px;">
+    Default easing <code>cubic-bezier(0.46, 0.03, 0.52, 0.96)</code>. Cubic <code>cubic-bezier(0.65, 0.05, 0.36, 1)</code>. No bounce.
+  </p>
+
+</div>
+</body>
+</html>
